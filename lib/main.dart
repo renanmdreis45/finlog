@@ -1,3 +1,4 @@
+import 'package:finlog/core/routes/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 
@@ -12,6 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'FinLog',
+      routes: routes,
     );
   }
 }
