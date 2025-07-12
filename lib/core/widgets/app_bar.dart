@@ -10,6 +10,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? leading;
 
   final Color textColor;
+  final VoidCallback? onThemeChanged;
 
   const CustomAppBar({
     super.key,
@@ -20,6 +21,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.leading,
     this.centerTitle = true,
     this.toolbarHeight = 56.0,
+    this.onThemeChanged,
   });
 
   @override
@@ -42,6 +44,30 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           bottom: Radius.circular(15),
         ),
       ),
+      actions: [
+        if (onThemeChanged != null)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Row(
+              children: [
+                Icon(
+                  Icons.light_mode,
+                  color: textColor,
+                ),
+                Switch(
+                  value: Theme.of(context).brightness == Brightness.dark,
+                  onChanged: (value) => onThemeChanged?.call(),
+                  activeColor: Colors.white,
+                  inactiveThumbColor: Colors.black,
+                ),
+                Icon(
+                  Icons.dark_mode,
+                  color: textColor,
+                ),
+              ],
+            ),
+          ),
+      ],
     );
   }
 
