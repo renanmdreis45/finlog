@@ -21,6 +21,14 @@ class _HomeViewState extends State<HomeView> {
           themeController.toggleTheme();
         },
       ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          children: [
+            
+          ],
+        ),
+      ),
     );
   }
 }

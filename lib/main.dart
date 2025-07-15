@@ -1,6 +1,6 @@
 import 'package:finlog/core/controllers/theme_controller.dart';
 import 'package:finlog/core/routes/app_router.dart';
-import 'package:finlog/modules/home/presentation/home_view.dart';
+import 'package:finlog/modules/home/presentation/views/home_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
