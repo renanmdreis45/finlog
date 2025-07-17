@@ -13,6 +13,8 @@ dependencies:
 
   # UI
   cupertino_icons: ^1.0.8
+  fl_chart: ^0.66.2
+  cached_network_image: ^3.3.1
 
   # State Management
   flutter_bloc: ^8.1.4

@@ -4,7 +4,7 @@ abstract class FinancialState extends Equatable {
   const FinancialState();
 
   @override
-  List<Object?> get props => [];
+  List<Object> get props => [];
 }
 
 class FinancialInitial extends FinancialState {}
@@ -17,7 +17,7 @@ class FinancialLoaded extends FinancialState {
   const FinancialLoaded({required this.currentBalance});
 
   @override
-  List<Object?> get props => [currentBalance];
+  List<Object> get props => [currentBalance];
 }
 
 class FinancialError extends FinancialState {
@@ -26,5 +26,5 @@ class FinancialError extends FinancialState {
   const FinancialError({required this.message});
 
   @override
-  List<Object?> get props => [message];
+  List<Object> get props => [message];
 }

@@ -1,8 +1,9 @@
-import 'package:finlog/core/usecases/usecase.dart';
-import 'package:finlog/features/financial/domain/usecases/get_current_balance.dart';
-import 'package:finlog/features/financial/presentation/bloc/financial_event.dart';
-import 'package:finlog/features/financial/presentation/bloc/financial_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../core/usecases/usecase.dart';
+import '../../domain/usecases/get_current_balance.dart';
+import 'financial_event.dart';
+import 'financial_state.dart';
 
 class FinancialBloc extends Bloc<FinancialEvent, FinancialState> {
   final GetCurrentBalance getCurrentBalance;
@@ -22,7 +23,7 @@ class FinancialBloc extends Bloc<FinancialEvent, FinancialState> {
     final result = await getCurrentBalance(NoParams());
 
     result.fold(
-      (failure) => emit(FinancialError(message: failure.message)),
+      (failure) => emit(FinancialError(message: failure.toString())),
       (balance) => emit(FinancialLoaded(currentBalance: balance)),
     );
   }
