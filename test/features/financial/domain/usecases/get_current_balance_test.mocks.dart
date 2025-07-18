@@ -7,10 +7,8 @@ import 'dart:async' as _i4;
 
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:finlog/core/error/failures.dart' as _i5;
-import 'package:finlog/features/financial/domain/entities/transaction.dart'
-    as _i6;
-import 'package:finlog/features/financial/domain/repositories/financial_repository.dart'
-    as _i3;
+import 'package:finlog/modules/transactions/domain/entities/transaction.dart' as _i6;
+import 'package:finlog/modules/transactions/domain/repositories/transaction_repository.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -29,89 +27,75 @@ import 'package:mockito/mockito.dart' as _i1;
 
 class _FakeEither_0<L, R> extends _i1.SmartFake implements _i2.Either<L, R> {
   _FakeEither_0(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+      : super(parent, parentInvocation);
 }
 
 /// A class which mocks [FinancialRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockFinancialRepository extends _i1.Mock
-    implements _i3.FinancialRepository {
-  MockFinancialRepository() {
+    implements _i3.TransactionRepository {
+  MockTransactionRepository() {
     _i1.throwOnMissingStub(this);
   }
 
-  @override
   _i4.Future<_i2.Either<_i5.Failure, List<_i6.Transaction>>>
-  getTransactions() =>
-      (super.noSuchMethod(
+      getTransactions() => (super.noSuchMethod(
             Invocation.method(#getTransactions, []),
-            returnValue: _i4.Future<
-              _i2.Either<_i5.Failure, List<_i6.Transaction>>
-            >.value(
+            returnValue: _i4
+                .Future<_i2.Either<_i5.Failure, List<_i6.Transaction>>>.value(
               _FakeEither_0<_i5.Failure, List<_i6.Transaction>>(
                 this,
                 Invocation.method(#getTransactions, []),
               ),
             ),
-          )
-          as _i4.Future<_i2.Either<_i5.Failure, List<_i6.Transaction>>>);
+          ) as _i4.Future<_i2.Either<_i5.Failure, List<_i6.Transaction>>>);
 
-  @override
   _i4.Future<_i2.Either<_i5.Failure, _i6.Transaction>> addTransaction(
     _i6.Transaction? transaction,
   ) =>
       (super.noSuchMethod(
+        Invocation.method(#addTransaction, [transaction]),
+        returnValue: _i4.Future<_i2.Either<_i5.Failure, _i6.Transaction>>.value(
+          _FakeEither_0<_i5.Failure, _i6.Transaction>(
+            this,
             Invocation.method(#addTransaction, [transaction]),
-            returnValue:
-                _i4.Future<_i2.Either<_i5.Failure, _i6.Transaction>>.value(
-                  _FakeEither_0<_i5.Failure, _i6.Transaction>(
-                    this,
-                    Invocation.method(#addTransaction, [transaction]),
-                  ),
-                ),
-          )
-          as _i4.Future<_i2.Either<_i5.Failure, _i6.Transaction>>);
+          ),
+        ),
+      ) as _i4.Future<_i2.Either<_i5.Failure, _i6.Transaction>>);
 
-  @override
   _i4.Future<_i2.Either<_i5.Failure, double>> getCurrentBalance() =>
       (super.noSuchMethod(
+        Invocation.method(#getCurrentBalance, []),
+        returnValue: _i4.Future<_i2.Either<_i5.Failure, double>>.value(
+          _FakeEither_0<_i5.Failure, double>(
+            this,
             Invocation.method(#getCurrentBalance, []),
-            returnValue: _i4.Future<_i2.Either<_i5.Failure, double>>.value(
-              _FakeEither_0<_i5.Failure, double>(
-                this,
-                Invocation.method(#getCurrentBalance, []),
-              ),
-            ),
-          )
-          as _i4.Future<_i2.Either<_i5.Failure, double>>);
+          ),
+        ),
+      ) as _i4.Future<_i2.Either<_i5.Failure, double>>);
 
-  @override
   _i4.Future<_i2.Either<_i5.Failure, void>> deleteTransaction(String? id) =>
       (super.noSuchMethod(
+        Invocation.method(#deleteTransaction, [id]),
+        returnValue: _i4.Future<_i2.Either<_i5.Failure, void>>.value(
+          _FakeEither_0<_i5.Failure, void>(
+            this,
             Invocation.method(#deleteTransaction, [id]),
-            returnValue: _i4.Future<_i2.Either<_i5.Failure, void>>.value(
-              _FakeEither_0<_i5.Failure, void>(
-                this,
-                Invocation.method(#deleteTransaction, [id]),
-              ),
-            ),
-          )
-          as _i4.Future<_i2.Either<_i5.Failure, void>>);
+          ),
+        ),
+      ) as _i4.Future<_i2.Either<_i5.Failure, void>>);
 
-  @override
   _i4.Future<_i2.Either<_i5.Failure, _i6.Transaction>> updateTransaction(
     _i6.Transaction? transaction,
   ) =>
       (super.noSuchMethod(
+        Invocation.method(#updateTransaction, [transaction]),
+        returnValue: _i4.Future<_i2.Either<_i5.Failure, _i6.Transaction>>.value(
+          _FakeEither_0<_i5.Failure, _i6.Transaction>(
+            this,
             Invocation.method(#updateTransaction, [transaction]),
-            returnValue:
-                _i4.Future<_i2.Either<_i5.Failure, _i6.Transaction>>.value(
-                  _FakeEither_0<_i5.Failure, _i6.Transaction>(
-                    this,
-                    Invocation.method(#updateTransaction, [transaction]),
-                  ),
-                ),
-          )
-          as _i4.Future<_i2.Either<_i5.Failure, _i6.Transaction>>);
+          ),
+        ),
+      ) as _i4.Future<_i2.Either<_i5.Failure, _i6.Transaction>>);
 }

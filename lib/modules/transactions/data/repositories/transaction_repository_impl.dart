@@ -17,7 +17,7 @@ class TransactionRepositoryImpl implements TransactionRepository {
       final transactions = await dataSource.getTransactions();
       return Right(transactions);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(ServerFailure(message: 'Failed to fetch transactions'));
     }
   }
 
@@ -29,7 +29,7 @@ class TransactionRepositoryImpl implements TransactionRepository {
       final result = await dataSource.addTransaction(transactionModel);
       return Right(result);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(ServerFailure(message: 'Failed to add transaction'));
     }
   }
 
@@ -41,7 +41,7 @@ class TransactionRepositoryImpl implements TransactionRepository {
       final result = await dataSource.updateTransaction(transactionModel);
       return Right(result);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(ServerFailure(message: 'Failed to update transaction'));
     }
   }
 
@@ -51,7 +51,7 @@ class TransactionRepositoryImpl implements TransactionRepository {
       await dataSource.deleteTransaction(id);
       return const Right(null);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(ServerFailure(message: 'Failed to delete transaction'));
     }
   }
 
@@ -64,7 +64,8 @@ class TransactionRepositoryImpl implements TransactionRepository {
       final transactions = await dataSource.getTransactionsByPeriod(start, end);
       return Right(transactions);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(
+          ServerFailure(message: 'Failed to fetch transactions by period'));
     }
   }
 
@@ -76,7 +77,8 @@ class TransactionRepositoryImpl implements TransactionRepository {
       final transactions = await dataSource.getTransactionsByCategory(category);
       return Right(transactions);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(
+          ServerFailure(message: 'Failed to fetch transactions by category'));
     }
   }
 }
