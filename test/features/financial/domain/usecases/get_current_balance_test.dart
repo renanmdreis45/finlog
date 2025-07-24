@@ -23,14 +23,11 @@ void main() {
   test(
     'should get current balance from the repository',
     () async {
-      // arrange
       when(mockRepository.getCurrentBalance())
           .thenAnswer((_) async => const Right(testBalance));
 
-      // act
       final result = await usecase(NoParams());
 
-      // assert
       expect(result, const Right(testBalance));
       verify(mockRepository.getCurrentBalance());
       verifyNoMoreInteractions(mockRepository);
