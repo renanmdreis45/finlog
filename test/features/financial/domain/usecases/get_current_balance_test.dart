@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:finlog/core/usecases/usecase.dart';
-import 'package:finlog/features/financial/domain/repositories/financial_repository.dart';
-import 'package:finlog/features/financial/domain/usecases/get_current_balance.dart';
+import 'package:finlog/modules/financial_overview/domain/repositories/financial_repository.dart';
+import 'package:finlog/modules/financial_overview/domain/usecases/get_current_balance.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';

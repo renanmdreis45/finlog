@@ -1,6 +1,6 @@
 import 'package:finlog/core/extensions/double_extension.dart';
-import 'package:finlog/features/financial/presentation/bloc/financial_bloc.dart';
-import 'package:finlog/features/financial/presentation/bloc/financial_state.dart';
+import 'package:finlog/modules/financial_overview/presentation/bloc/financial_bloc.dart';
+import 'package:finlog/modules/financial_overview/presentation/bloc/financial_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
