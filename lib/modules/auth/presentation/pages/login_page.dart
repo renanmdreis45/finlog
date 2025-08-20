@@ -273,12 +273,14 @@ class _LoginPageState extends State<LoginPage> {
         _isLoading = true;
       });
 
+      // Simulate login delay
       await Future.delayed(const Duration(seconds: 2));
 
       setState(() {
         _isLoading = false;
       });
 
+      // TODO: Implement actual login logic
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
@@ -291,6 +293,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _handleForgotPassword() {
+    // TODO: Navigate to forgot password page
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
         content: Text('Forgot password functionality coming soon!'),
@@ -299,6 +302,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _handleSignUp() {
+    // TODO: Navigate to sign up page
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
         content: Text('Sign up functionality coming soon!'),

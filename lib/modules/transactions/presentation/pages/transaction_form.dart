@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/enums/transaction_category.dart';
 import '../../domain/entities/transaction.dart';
 import '../bloc/transaction_bloc.dart';
 import '../bloc/transaction_event.dart';
@@ -26,16 +27,7 @@ class _TransactionFormState extends State<TransactionForm> {
   late TextEditingController _amountController;
   late TextEditingController _descriptionController;
   late DateTime _selectedDate;
-  String _selectedCategory = 'Food';
-
-  final List<String> _categories = [
-    'Food',
-    'Transport',
-    'Shopping',
-    'Bills',
-    'Entertainment',
-    'Others',
-  ];
+  String _selectedCategory = TransactionCategory.food.displayName;
 
   @override
   void initState() {
@@ -47,7 +39,8 @@ class _TransactionFormState extends State<TransactionForm> {
       text: widget.initialData?.description ?? '',
     );
     _selectedDate = widget.initialData?.date ?? DateTime.now();
-    _selectedCategory = widget.initialData?.category ?? _categories[0];
+    _selectedCategory =
+        widget.initialData?.category ?? TransactionCategory.food.displayName;
   }
 
   @override
@@ -140,7 +133,7 @@ class _TransactionFormState extends State<TransactionForm> {
           borderRadius: BorderRadius.circular(12),
         ),
       ),
-      items: _categories.map((category) {
+      items: TransactionCategory.displayValues.map((category) {
         return DropdownMenuItem(
           value: category,
           child: Text(category),
@@ -180,7 +173,7 @@ class _TransactionFormState extends State<TransactionForm> {
             Text(
               '${_selectedDate.day}/${_selectedDate.month}/${_selectedDate.year}',
             ),
-            const Icon(Icons.calendar_today),
+            const Text('📅'),
           ],
         ),
       ),
