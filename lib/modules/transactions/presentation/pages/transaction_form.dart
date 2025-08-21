@@ -1,3 +1,8 @@
+import 'package:finlog/modules/transactions/presentation/widgets/amount_field.dart';
+import 'package:finlog/modules/transactions/presentation/widgets/category_field.dart';
+import 'package:finlog/modules/transactions/presentation/widgets/date_field.dart';
+import 'package:finlog/modules/transactions/presentation/widgets/description_field.dart';
+import 'package:finlog/modules/transactions/presentation/widgets/submit_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -66,134 +71,33 @@ class _TransactionFormState extends State<TransactionForm> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _buildAmountField(),
+                AmountField(controller: _amountController),
                 const SizedBox(height: 16),
-                _buildDescriptionField(),
+                DescriptionField(
+                  descriptionController: _descriptionController,
+                ),
                 const SizedBox(height: 16),
-                _buildCategoryField(),
+                CategoryField(
+                  selectedCategory: _selectedCategory,
+                  onChanged: (value) {
+                    if (value != null) {
+                      setState(() => _selectedCategory = value);
+                    }
+                  },
+                ),
                 const SizedBox(height: 16),
-                _buildDateField(),
+                DateField(
+                  selectedDate: _selectedDate,
+                  onDateChanged: (date) => setState(() => _selectedDate = date),
+                ),
                 const SizedBox(height: 32),
-                _buildSubmitButton(),
+                SubmitButton(
+                  onPressed: _submitForm,
+                  text: widget.isEditing ? 'Update' : 'Save',
+                ),
               ],
             ),
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildAmountField() {
-    return TextFormField(
-      controller: _amountController,
-      keyboardType: TextInputType.number,
-      decoration: InputDecoration(
-        labelText: 'Amount',
-        prefixText: '\$',
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-      ),
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Please enter an amount';
-        }
-        if (double.tryParse(value) == null) {
-          return 'Please enter a valid number';
-        }
-        return null;
-      },
-    );
-  }
-
-  Widget _buildDescriptionField() {
-    return TextFormField(
-      controller: _descriptionController,
-      decoration: InputDecoration(
-        labelText: 'Description',
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-      ),
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Please enter a description';
-        }
-        return null;
-      },
-    );
-  }
-
-  Widget _buildCategoryField() {
-    return DropdownButtonFormField<String>(
-      value: _selectedCategory,
-      decoration: InputDecoration(
-        labelText: 'Category',
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-      ),
-      items: TransactionCategory.displayValues.map((category) {
-        return DropdownMenuItem(
-          value: category,
-          child: Text(category),
-        );
-      }).toList(),
-      onChanged: (value) {
-        if (value != null) {
-          setState(() => _selectedCategory = value);
-        }
-      },
-    );
-  }
-
-  Widget _buildDateField() {
-    return InkWell(
-      onTap: () async {
-        final date = await showDatePicker(
-          context: context,
-          initialDate: _selectedDate,
-          firstDate: DateTime(2020),
-          lastDate: DateTime.now().add(const Duration(days: 365)),
-        );
-        if (date != null) {
-          setState(() => _selectedDate = date);
-        }
-      },
-      child: InputDecorator(
-        decoration: InputDecoration(
-          labelText: 'Date',
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              '${_selectedDate.day}/${_selectedDate.month}/${_selectedDate.year}',
-            ),
-            const Text('📅'),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildSubmitButton() {
-    return SizedBox(
-      width: double.infinity,
-      height: 50,
-      child: ElevatedButton(
-        onPressed: _submitForm,
-        style: ElevatedButton.styleFrom(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-        ),
-        child: Text(
-          widget.isEditing ? 'Update' : 'Save',
-          style: const TextStyle(fontSize: 16),
         ),
       ),
     );
